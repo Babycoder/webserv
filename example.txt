@@ -1,4 +1,4 @@
-server {
+server{
     listen host:port
     server_name example.com www.example.com
     root /var/www/main
