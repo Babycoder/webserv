@@ -10,3 +10,5 @@ server {
         auto_index on/off
     ]    
 }
+
+
