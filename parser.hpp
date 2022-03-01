@@ -7,13 +7,15 @@ class parser {
 	private :
 		
 		std::vector<std::string>	_block;
-		std::fstream				_file;
 		std::string					_line;
 
 	public :
 
 		parser(std::string av);
+		parser();
 		~parser();
+
+		parser &operator=(parser const &src);
 
 		void	display();
 		

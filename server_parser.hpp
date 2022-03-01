@@ -9,8 +9,8 @@ class server_parser
         std::string port;
         std::vector<std::string> names;
         std::vector<std::string> error_pages;
+       // int clientMaxBodySize;
        // std::vector<location> locations;
-        int clientMaxBodySize;
 
     public :
     std::vector<std::string> _serverBlock;

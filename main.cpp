@@ -6,18 +6,21 @@
 int     main(int ac , char *av[])
 {
 
+    parser conf;
+
     if (ac == 2)
     {
         try
         {
-            parser parser(av[1]);
-            parser.display();
+            conf = parser(av[1]);
+
         }
         catch(const char *str)
         {
             std::cerr << str << std::endl;
             exit(1);
         }
+        conf.display();
     }
     else
     {

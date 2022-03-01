@@ -1,5 +1,7 @@
 
 
+
+
 server
 	port 80
 	host 0.0.0.0
@@ -9,21 +11,8 @@ server
 	location location_match
 		root /path
 		index index.html
-		cgi /path
+		cgi /path                                      
 		auto_index on/off
-  
-      
- 
- 
-server
-	fsdfsdgdsf
-	gsdfgsdfgsdfg
-	sdfgsdfgsdfg
-	sdfgsdfgsdfgsdfgsdfgsdfasdf
-	sadfasdfasdfasdfasdfa
- sdfasdfasdfasdfasdfasdf
-
-
 
 
 

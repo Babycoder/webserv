@@ -10,3 +10,4 @@
 
 
 std::vector<std::string>        ft_split(std::string str, std::string delim);
+bool                            is_empty(std::string str);

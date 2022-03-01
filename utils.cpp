@@ -16,3 +16,15 @@ std::vector<std::string>        ft_split(std::string str, std::string delim)
 
     return tokens;
 }
+
+bool                            is_empty(std::string str)
+{
+    if (str.empty())
+        return true;
+    for(size_t i = 0; i < str.length() ; i++)
+    {
+        if (str[i] != 32 && str[i] != 9)
+            return false;
+    }
+    return true;
+}
