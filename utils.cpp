@@ -36,3 +36,10 @@ void		print_vector(std::vector<std::string> vc)
 	for(;it != vc.end(); it++)
 		std::cout << *it << std::endl;
 }
+
+bool                            is_serverline(std::string str)
+{
+	if(str[0] == 9 && str[1] != 9 && str[1] != 32)
+		return true;
+	return false;
+}

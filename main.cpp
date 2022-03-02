@@ -20,7 +20,6 @@ int     main(int ac , char *av[])
             std::cerr << str << std::endl;
             exit(1);
         }
-        std::cout << conf->_servers[0]->getlinetest() << std::endl;
     }
     else
     {
