@@ -1,18 +1,20 @@
 
-
-
-
 server
 	port 80
 	host 0.0.0.0
 	server_name example.com www.example.com
-	root /var/www/main    
+	root /var/www/main    	
 	error_page 400 /40x.html
-	location location_match
+
+	
+	
+	location
+		location_match /path
 		root /path
 		index index.html
 		cgi /path                                      
 		auto_index on/off
+
 
 
 

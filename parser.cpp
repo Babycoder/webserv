@@ -1,6 +1,7 @@
 #include "parser.hpp"
 
 
+
 parser &parser::operator=(parser const &src)
 {
 	if (this == &src)
@@ -27,18 +28,21 @@ parser::parser(std::string av)
 			{
 				if (is_empty(_line) && in_block == 1)
 				{
+					server_parser *obj = new server_parser(_block);
 					/*
 						int this scope i will create an object of server_parse and send the server block
 						set in_block to 0 => clear the _block 
 					*/
-					in_block = 0;
+					_servers.push_back(obj);
+					delete obj;
+					//in_block = 0;
 					//_block.clear();
-					//_line.clear();
 					break;
 				}
 				else
 				{
-					in_block = 1;
+					if(in_block == 0)
+						in_block = 1;
 					_block.push_back(_line);
 				}
 			}
@@ -47,7 +51,7 @@ parser::parser(std::string av)
 	}
 	else
 	{
-		throw "Open config file Error";
+		throw "File Error: open config file failed !!";
 	}
 
 }

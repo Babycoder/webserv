@@ -1,4 +1,4 @@
-SRC=main.cpp utils.cpp parser.cpp
+SRC=main.cpp utils.cpp parser.cpp server_parser.cpp
 
 FLAGS=-Wall -Wextra -Werror -std=c++98
 
