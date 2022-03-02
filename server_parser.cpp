@@ -38,10 +38,54 @@ bool						server_parser::setPort(std::vector<std::string> tokens)
 
 bool						server_parser::setHost(std::vector<std::string> tokens)
 {
+	if(tokens.size() != 2)
+		return false;
+	host = tokens[1];
+	return true;
+}
+
+bool						server_parser::setNames(std::vector<std::string> tokens)
+{
+	if (tokens.size() < 2)
+		return false;
 	
+	std::vector<std::string>::iterator it = tokens.begin() + 1;
+
+	for(; it != tokens.end() ; it++)
+		names.push_back(*it);
+	
+	return true;
+}
+
+bool						server_parser::setRoot(std::vector<std::string> tokens)
+{
+	if(tokens.size() != 2)
+		return false;
+	root_path = tokens[1];
+	return true;
+}
+
+bool						server_parser::setErrorPages(std::vector<std::string> tokens)
+{
+	if (tokens.size() < 2)
+		return false;
+	
+	std::vector<std::string>::iterator it = tokens.begin() + 1;
+
+	for(; it != tokens.end() ; it++)
+		error_pages.push_back(*it);
+	
+	return true;
 }
 
 
+bool						server_parser::setMaxSize(std::vector<std::string> tokens)
+{
+	if(tokens.size() != 2)
+		return false;
+	clientMaxBodySize  = tokens[1];
+	return true;
+}
 
 bool						server_parser::set_directives(std::vector<std::string> tokens)
 {
@@ -51,31 +95,17 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 		res = setPort(tokens);
 	else if (tokens[0] == "host")
 		res = setHost(tokens);
-	/*else if (tokens[0] == "host")
-	{
-		
-	}
-	else if (tokens[0] == "host")
-	{
-		
-	}
-	else if (tokens[0] == "host")
-	{
-		
-	}
-	else if (tokens[0] == "host")
-	{
-		
-	}*/
+	else if (tokens[0] == "server_name")
+		res = setNames(tokens);
+	else if (tokens[0] == "root")
+		res = setRoot(tokens);
+	else if (tokens[0] == "error_page")
+		res = setErrorPages(tokens);
+	else if (tokens[0] == "size")
+		res = setMaxSize(tokens);
 	else
 		res = false;
 	
-
-
-
-
-
-
 
 	return res;
 
@@ -111,7 +141,7 @@ void		server_parser::setDefault()
 
 
 
-int							server_parser::getMaxSzie()
+std::string							server_parser::getMaxSzie()
 {
 	return clientMaxBodySize;
 }

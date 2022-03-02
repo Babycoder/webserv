@@ -57,7 +57,7 @@ bool                            is_digit(std::string str)
 
 bool							is_directive(std::string str)
 {
-	if (str == "port" || str == "host" ||  str == "server_name" ||  str == "root" ||  str == "error_page" ||  str == "location")
+	if (str == "port" || str == "host" ||  str == "server_name" ||  str == "root" ||  str == "error_page" ||  str == "location" ||  str == "size")
 		return true;
 	return false;
 }

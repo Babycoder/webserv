@@ -7,9 +7,10 @@ class server_parser
 	private :
 		int							port;
 		std::string					host;
+		std::string					root_path;
 		std::vector<std::string>	names;
 		std::vector<std::string>	error_pages;
-		int							clientMaxBodySize;
+		std::string					clientMaxBodySize;
 		std::vector<std::string>	_serverBlock;
 		
 	   // std::vector<location> locations;
@@ -28,6 +29,7 @@ class server_parser
 	bool						set_directives(std::vector<std::string> tokens);
 	bool						setPort(std::vector<std::string> tokens);
 	bool						setHost(std::vector<std::string> tokens);
+	bool						setRoot(std::vector<std::string> tokens);
 	bool						setNames(std::vector<std::string> tokens);
 	bool						setErrorPages(std::vector<std::string> tokens);
 	bool						setMaxSize(std::vector<std::string> tokens);
@@ -36,9 +38,10 @@ class server_parser
 	
 	//	Getters :
 	
-	int							getMaxSzie();
 	int							getPort();
+	std::string							getMaxSzie();
 	std::string					getHost();
+	std::string					getRoot();
 	std::vector<std::string>    getNames();
 	std::vector<std::string>    getErrorPages();
 	std::vector<std::string>    getServerBlock();
