@@ -43,3 +43,38 @@ bool                            is_serverline(std::string str)
 		return true;
 	return false;
 }
+
+bool                            is_digit(std::string str)
+{
+	for(size_t i = 0; i < str.length(); i++)
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return false;
+	}
+	return true;
+}
+
+
+bool							is_directive(std::string str)
+{
+	if (str == "port" || str == "host" ||  str == "server_name" ||  str == "root" ||  str == "error_page" ||  str == "location")
+		return true;
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

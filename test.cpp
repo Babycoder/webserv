@@ -5,6 +5,6 @@
 int     main()
 {
 
-	std::cout << is_serverline("	port 80  ") << std::endl;
+	std::cout << is_directive("port") << std::endl;
 	return 0;
 }

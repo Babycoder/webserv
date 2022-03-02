@@ -13,7 +13,6 @@ int     main(int ac , char *av[])
         try
         {
             conf = new parser(av[1]);
-
         }
         catch(const char *str)
         {

@@ -19,8 +19,8 @@ class parser {
 		~parser();
 		
 		parser &operator=(parser const &src);
-		
-		
+	
+			
 		std::vector<server_parser *>	_servers;
 		void	display();
 		
