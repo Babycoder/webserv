@@ -34,10 +34,10 @@ parser::parser(std::string av)
 						set in_block to 0 => clear the _block 
 					*/
 					_servers.push_back(obj);
+					in_block = 0;
+					_line.clear();
+					_block.clear();
 					delete obj;
-					//in_block = 0;
-					//_block.clear();
-					break;
 				}
 				else
 				{

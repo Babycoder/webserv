@@ -1,6 +1,6 @@
 
 server
-	port 80   				
+	port 80  				
 	host 0sfgdsfgsdfhgsdfh.0.0.0
 	server_name example.com www.example.com
 	root /var/www/main  
@@ -9,14 +9,9 @@ server
 
 	
 	
-	location
-		location_match /path
-		root /path
-		index index.html
-		cgi /path                                      
-		auto_index on/off
+server
+	port 42
 
-
-
-
+server
+	port 1337
 

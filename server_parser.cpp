@@ -156,6 +156,10 @@ std::string					server_parser::getHost()
 	return host;
 }
 
+std::string					server_parser::getRoot()
+{
+	return root_path;
+}
 std::vector<std::string>	server_parser::getNames()
 {
 	return names;
