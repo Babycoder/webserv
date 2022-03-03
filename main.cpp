@@ -28,11 +28,11 @@ int     main(int ac , char *av[])
     
      std::cout << "Number of servers " << conf->_servers.size() << std::endl;
     
-    std::vector<server_parser>::iterator it = conf->_servers.begin();
-    for(; it != conf->_servers.end(); it++)
-    {
-        std::cout << "Port = " << (*it).getPort() << std::endl;
-    }
+    // std::vector<server_parser>::iterator it = conf->_servers.begin();
+    // for(; it != conf->_servers.end(); it++)
+    // {
+    //     std::cout << "Port = " << (*it).getMaxSzie() << std::endl;
+    // }
      delete conf;
     return 0;
 }

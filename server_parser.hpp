@@ -6,11 +6,11 @@ class server_parser
 {
 	private :
 		int							port;
+		int					clientMaxBodySize;
 		std::string					host;
 		std::string					root_path;
 		std::vector<std::string>	names;
 		std::vector<std::string>	error_pages;
-		int					clientMaxBodySize;
 		std::vector<std::string>	_serverBlock;
 		
 	   // std::vector<location> locations;

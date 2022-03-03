@@ -26,14 +26,11 @@ parser::parser(std::string av)
 				throw "File Error : you must start with server !!";
 			if(_line == "server" || in_block == 1)
 			{
-
-
 				if (is_empty(_line) && in_block == 1)
 				{
 					server_parser *obj = new server_parser(_block);
 					_servers.push_back(*obj);
 					in_block = 0;
-					// _line.clear();
 					_block.clear();
 					delete obj;
 				}
@@ -44,6 +41,14 @@ parser::parser(std::string av)
 					_block.push_back(_line);
 				}
 			}
+		}
+		if (in_block == 1)
+		{
+			server_parser *obj = new server_parser(_block);
+			_servers.push_back(*obj);
+			in_block = 0;
+			_block.clear();
+			delete obj;
 		}
 		_file.close();
 	}

@@ -2,8 +2,7 @@
 
 
 server_parser::server_parser(){
-	port = 80;
-	host = "0.0.0.0";
+	setDefault();
 }
 server_parser::~server_parser(){}
 
@@ -119,6 +118,7 @@ void		server_parser::setDefault()
 {
 	port = 80;
 	host = "0.0.0.0";
+	clientMaxBodySize = 0;
 }
 
  
