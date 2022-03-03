@@ -4,7 +4,8 @@
 
 int     main()
 {
+	int i;
 
-	std::cout << is_directive("port") << std::endl;
+	std::cout << i << std::endl;
 	return 0;
-}
+}	

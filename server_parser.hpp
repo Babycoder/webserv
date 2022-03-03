@@ -1,19 +1,34 @@
 #pragma once
 
 #include "utils.hpp"
+#include "location_parser.hpp"
+
+class location_parser;
+
+struct id {
+	int	port;
+	int size;
+	int	host;
+	int root;
+	int names;
+	int	error;
+};
 
 class server_parser
 {
 	private :
 		int							port;
-		int					clientMaxBodySize;
+		int							clientMaxBodySize;
 		std::string					host;
 		std::string					root_path;
 		std::vector<std::string>	names;
 		std::vector<std::string>	error_pages;
-		std::vector<std::string>	_serverBlock;
 		
-	   // std::vector<location> locations;
+		std::vector<std::string>	_serverBlock;
+		// std::vector<std::string>	_locationBlock;
+	   // std::vector<location>		locations;
+		
+		struct id							id;
 
 	public :
 
@@ -26,13 +41,15 @@ class server_parser
 
 
 	//	Setters :
-	bool						set_directives(std::vector<std::string> tokens);
+	
 	bool						setPort(std::vector<std::string> tokens);
 	bool						setHost(std::vector<std::string> tokens);
 	bool						setRoot(std::vector<std::string> tokens);
 	bool						setNames(std::vector<std::string> tokens);
 	bool						setErrorPages(std::vector<std::string> tokens);
 	bool						setMaxSize(std::vector<std::string> tokens);
+	
+	bool						set_directives(std::vector<std::string> tokens);
 	void						setDefault();
 
 	

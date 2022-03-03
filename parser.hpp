@@ -22,5 +22,6 @@ class parser {
 	
 			
 		std::vector<server_parser>	_servers;
+		
 		void	display();
 };
