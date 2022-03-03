@@ -26,16 +26,14 @@ parser::parser(std::string av)
 				throw "File Error : you must start with server !!";
 			if(_line == "server" || in_block == 1)
 			{
+
+
 				if (is_empty(_line) && in_block == 1)
 				{
 					server_parser *obj = new server_parser(_block);
-					/*
-						int this scope i will create an object of server_parse and send the server block
-						set in_block to 0 => clear the _block 
-					*/
-					_servers.push_back(obj);
+					_servers.push_back(*obj);
 					in_block = 0;
-					_line.clear();
+					// _line.clear();
 					_block.clear();
 					delete obj;
 				}

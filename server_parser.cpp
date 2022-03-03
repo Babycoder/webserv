@@ -83,7 +83,12 @@ bool						server_parser::setMaxSize(std::vector<std::string> tokens)
 {
 	if(tokens.size() != 2)
 		return false;
-	clientMaxBodySize  = tokens[1];
+	if(!is_digit(tokens[1]) || tokens[1].length() > 4)
+		return false;
+	int tmp = atoi(tokens[1].c_str());
+	if (tmp < 0 || tmp > 1024)
+		return false;
+	clientMaxBodySize = tmp;
 	return true;
 }
 
@@ -108,8 +113,6 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 	
 
 	return res;
-
-
 }
 
 void		server_parser::setDefault()
@@ -141,7 +144,7 @@ void		server_parser::setDefault()
 
 
 
-std::string							server_parser::getMaxSzie()
+int							server_parser::getMaxSzie()
 {
 	return clientMaxBodySize;
 }

@@ -10,7 +10,7 @@ class server_parser
 		std::string					root_path;
 		std::vector<std::string>	names;
 		std::vector<std::string>	error_pages;
-		std::string					clientMaxBodySize;
+		int					clientMaxBodySize;
 		std::vector<std::string>	_serverBlock;
 		
 	   // std::vector<location> locations;
@@ -39,7 +39,7 @@ class server_parser
 	//	Getters :
 	
 	int							getPort();
-	std::string							getMaxSzie();
+	int							getMaxSzie();
 	std::string					getHost();
 	std::string					getRoot();
 	std::vector<std::string>    getNames();
