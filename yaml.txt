@@ -2,10 +2,13 @@
 
 server
 	port 65535
+	host werqwerwqer
 	server_name example.com www.example.com
 	root /var/www/main 
 	error_page 400 
 	size 1024
+	location
+
 	
 
 
