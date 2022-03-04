@@ -26,7 +26,6 @@ class server_parser
 
 		std::vector<std::string>		_serverBlock;
 	    
-	   	std::vector<location_parser>	_locations;
 		struct id						id;
 
 	public :
@@ -53,6 +52,8 @@ class server_parser
 
 
 		//	Getters :
+	   	
+		std::vector<location_parser>	_locations;
 		std::vector<std::string>		_locationBlock;
 
 		int							getPort();

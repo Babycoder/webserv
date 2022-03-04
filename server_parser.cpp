@@ -147,8 +147,8 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
  server_parser::server_parser(std::vector<std::string> block) : _serverBlock(block)
  {
 	setDefault();
-	std::vector<std::string>::iterator tmp;
 	std::vector<std::string> tokens;
+	std::vector<std::string>::iterator tmp;
 
 	int in_location = 0;
 
@@ -178,7 +178,7 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 				break;
 			}
 			else
-				_locationBlock.push_back(*it); // should be first condition
+				_locationBlock.push_back(*it); 
 		}
 		else
 			throw ("File Error: line identation not valid !!");

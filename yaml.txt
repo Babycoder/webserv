@@ -12,7 +12,15 @@ server
 		root /path
 		index index.html
 		cgi /path
-		auto_index on/off
+		location fsdfdfgsdfg
+		location gdfgs
+		location sdfgsdf
+		location
+		location
+		location
+		location Bobiiiiiiz
+
+
 
 
 server

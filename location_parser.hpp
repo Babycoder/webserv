@@ -5,10 +5,6 @@
 class location_parser
 {
 	private :
-		
-
-	public :
-		
 		bool							auto_index;
 		std::string						location_path;
 		std::string						root_path;
@@ -20,10 +16,16 @@ class location_parser
 
 		std::vector<std::string>		_locationBlock;
 
-		// location_parser();
-		// location_parser(std::vector<std::string> block);
-		// ~location_parser();
 
-		// location_parser &operator=(location_parser const &src);
+	public :
+		
+
+		location_parser();
+		location_parser(std::vector<std::string> block);
+		~location_parser();
+		
+		bool	set_locationdirectives(std::vector<std::string> tokens);
+
+		location_parser &operator=(location_parser const &src);
 
 };
