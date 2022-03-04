@@ -4,7 +4,7 @@
 
 int     main()
 {
-	int i;
+	bool i = is_locationline("	root /path");
 
 	std::cout << i << std::endl;
 	return 0;

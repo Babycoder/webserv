@@ -44,6 +44,13 @@ bool                            is_serverline(std::string str)
 	return false;
 }
 
+bool                            is_locationline(std::string str)
+{
+	if(str[0] == 9 && str[1] == 9 && str[2] != 9 && str[2] != 32)
+		return true;
+	return false;
+}
+
 bool                            is_digit(std::string str)
 {
 	for(size_t i = 0; i < str.length(); i++)

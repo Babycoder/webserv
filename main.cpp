@@ -25,15 +25,15 @@ int     main(int ac , char *av[])
         std::cerr << "Please provide a config file" << std::endl;
         return 1;
     }
+
     
-    std::cout << "Number of servers " << conf->_servers.size() << std::endl;
-    
-    // std::vector<server_parser>::iterator it = conf->_servers.begin();
-    // for(; it != conf->_servers.end(); it++)
-    // {
-        // std::cout << "Port = " << (*it).getHost() << std::endl;
-    // }
+    std::cout << conf->_servers.size() << std::endl;
+
+    print_vector(conf->_servers[0]._locationBlock);
+
+
     delete conf;
     return 0;
 }
+
 

@@ -20,6 +20,20 @@ server_parser::~server_parser(){}
 	return *this;	
  }
 
+void		server_parser::setDefault()
+{
+	port = 80;
+	host = "0.0.0.0";
+	clientMaxBodySize = 0;
+
+	id.port = 0;
+	id.size = 0;
+	id.host = 0;
+	id.root = 0;
+	id.names = 0;
+	id.error = 0;
+
+}
 
 bool						server_parser::setPort(std::vector<std::string> tokens)
 {
@@ -128,35 +142,43 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 	return res;
 }
 
-void		server_parser::setDefault()
-{
-	port = 80;
-	host = "0.0.0.0";
-	clientMaxBodySize = 0;
-
-	id.port = 0;
-	id.size = 0;
-	id.host = 0;
-	id.root = 0;
-	id.names = 0;
-	id.error = 0;
-
-}
 
  
  server_parser::server_parser(std::vector<std::string> block) : _serverBlock(block)
  {
 	setDefault();
+	std::vector<std::string>::iterator tmp;
 	std::vector<std::string> tokens;
+
+	int in_location = 0;
+
 
 	std::vector<std::string>::iterator it = _serverBlock.begin() + 1;
 	for(; it != _serverBlock.end(); it++)
 	{
-		if(is_serverline(*it))
+		if(is_serverline(*it) && *it != "	location" && in_location == 0)
 		{
 			tokens = ft_split(*it, "	 ");
 			if(!set_directives(tokens))
 				throw "File Error : set a directive failed !!";
+		}
+		else if (*it == "	location" || in_location == 1)
+		{
+			if (in_location == 0)
+				in_location = 1;
+			tmp = it + 1;
+			if (*tmp == "	location" || (*tmp).empty()) // ila salate 1st location
+			{
+				_locationBlock.push_back(*it);
+				// server_parser *obj = new server_parser(_block);
+				// _servers.push_back(*obj);
+				// in_block = 0;
+				// _block.clear();
+				// delete obj;
+				break;
+			}
+			else
+				_locationBlock.push_back(*it); // should be first condition
 		}
 		else
 			throw ("File Error: line identation not valid !!");
@@ -170,17 +192,14 @@ int							server_parser::getMaxSzie()
 {
 	return clientMaxBodySize;
 }
-
 int							server_parser::getPort()
 {
 	return port;
 }
-
 std::string					server_parser::getHost()
 {
 	return host;
 }
-
 std::string					server_parser::getRoot()
 {
 	return root_path;

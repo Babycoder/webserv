@@ -20,10 +20,10 @@ class location_parser
 
 		std::vector<std::string>		_locationBlock;
 
-		location_parser();
-		location_parser(std::vector<std::string> block);
-		~location_parser();
+		// location_parser();
+		// location_parser(std::vector<std::string> block);
+		// ~location_parser();
 
-		location_parser &operator=(location_parser const &src);
+		// location_parser &operator=(location_parser const &src);
 
 };

@@ -1,25 +1,22 @@
 
 
 server
-	port 65535
+	port 90
 	host werqwerwqer
 	server_name example.com www.example.com
 	root /var/www/main 
 	error_page 400 
 	size 1024
 	location
-
-	
-
-
-
-server
-	port 1337 
-
-
-
+		location_match
+		root /path
+		index index.html
+		cgi /path
+		auto_index on/off
 
 
 server
-	port 42
-	size 3
+	port 80
+	host abcd
+
+

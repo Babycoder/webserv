@@ -25,10 +25,8 @@ class server_parser
 		std::vector<std::string>		error_pages;
 
 		std::vector<std::string>		_serverBlock;
-		std::vector<std::string>		_locationBlock;
 	    
-	   	std::vector<location_parser>	locations;
-		
+	   	std::vector<location_parser>	_locations;
 		struct id						id;
 
 	public :
@@ -55,6 +53,7 @@ class server_parser
 
 
 		//	Getters :
+		std::vector<std::string>		_locationBlock;
 
 		int							getPort();
 		int							getMaxSzie();
