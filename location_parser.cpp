@@ -125,7 +125,7 @@ bool		location_parser::setAcceptedRequeasts(std::vector<std::string> tokens)
 	accepted_requests.clear();
 	for(; it != tokens.end() ; it++)
 	{
-		if (*it != "GET" || *it != "DELETE" || *it != "POST")
+		if (*it != "GET" && *it != "DELETE" && *it != "POST")
 			return false;
 		accepted_requests.push_back(*it);
 	}
