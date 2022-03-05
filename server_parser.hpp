@@ -53,9 +53,9 @@ class server_parser
 
 		//	Getters :
 	   	
-		std::vector<location_parser>	_locations;
-		
 		std::vector<std::string>		_locationBlock;
+		
+		std::vector<location_parser>	_locations;
 
 		int							getPort();
 		int							getMaxSzie();

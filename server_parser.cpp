@@ -170,12 +170,11 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 			if (*tmp == "	location" || (*tmp).empty()) // ila salate 1st location
 			{
 				_locationBlock.push_back(*it);
-				// server_parser *obj = new server_parser(_block);
-				// _servers.push_back(*obj);
-				// in_block = 0;
-				// _block.clear();
-				// delete obj;
-				break;
+				location_parser *obj = new location_parser(_locationBlock);
+				_locations.push_back(*obj);
+				_locationBlock.clear();
+				delete obj;
+				
 			}
 			else
 				_locationBlock.push_back(*it); 

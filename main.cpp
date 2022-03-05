@@ -27,9 +27,9 @@ int     main(int ac , char *av[])
     }
 
     
-    std::cout << conf->_servers.size() << std::endl;
+    //std::cout << conf->_servers.size() << std::endl;
 
-    print_vector(conf->_servers[0]._locationBlock);
+    std::cout<< conf->_servers[0]._locations[0].getAutoIndex() << std::endl;
 
 
     delete conf;

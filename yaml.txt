@@ -8,18 +8,7 @@ server
 	error_page 400 
 	size 1024
 	location
-		location_match
-		root /path
-		index index.html
-		cgi /path
-		location fsdfdfgsdfg
-		location gdfgs
-		location sdfgsdf
-		location
-		location
-		location
-		location Bobiiiiiiz
-
+		auto_index on;
 
 
 

@@ -28,6 +28,14 @@ location_parser &location_parser::operator=(location_parser const &src){
 }
 
 
+void		location_parser::setLocationDefault()
+{
+	accepted_requests.push_back("GET");
+	accepted_requests.push_back("DELETE");
+	accepted_requests.push_back("POST");
+}
+
+
 bool		location_parser::setAutoIndex(std::vector<std::string> tokens)
 {
 	if(tokens.size() != 2)
@@ -84,6 +92,7 @@ bool		location_parser::setAcceptedRequeasts(std::vector<std::string> tokens)
 	
 	std::vector<std::string>::iterator it = tokens.begin() + 1;
 
+	accepted_requests.clear();
 	for(; it != tokens.end() ; it++)
 	{
 		if (*it != "GET" || *it != "DELETE" || *it != "POST")
@@ -138,6 +147,7 @@ bool	location_parser::set_locationdirectives(std::vector<std::string> tokens)
 
 location_parser::location_parser(std::vector<std::string> block) : _locationBlock(block)
 {
+	setLocationDefault();
 	std::vector<std::string>                tokens;
 	
 	
