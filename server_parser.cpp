@@ -10,6 +10,7 @@ server_parser::~server_parser(){}
  {
 	if (this == &src)
 		return *this;
+	root_path = src.root_path;
 	host = src.host;
 	port = src.port;
 	names = src.names;
