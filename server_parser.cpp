@@ -17,6 +17,8 @@ server_parser::~server_parser(){}
 	error_pages = src.error_pages;
 	clientMaxBodySize = src.clientMaxBodySize;
 	_serverBlock = src._serverBlock;
+	_locations = src._locations;
+	_locationBlock = src._locationBlock;
 	
 	return *this;	
  }
