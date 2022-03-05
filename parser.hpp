@@ -14,7 +14,7 @@ class parser {
 
 	public :
 
-		parser(std::string av);
+		parser(const char *av);
 		parser();
 		~parser();
 		

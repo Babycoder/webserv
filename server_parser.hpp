@@ -54,6 +54,7 @@ class server_parser
 		//	Getters :
 	   	
 		std::vector<location_parser>	_locations;
+		
 		std::vector<std::string>		_locationBlock;
 
 		int							getPort();

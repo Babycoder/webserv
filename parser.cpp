@@ -12,7 +12,7 @@ parser &parser::operator=(parser const &src)
 	return *this;
 }
 
-parser::parser(std::string av)
+parser::parser(const char *av)
 {
 	std::fstream	_file;
 	bool 			in_block = 0;
