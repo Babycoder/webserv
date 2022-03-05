@@ -167,7 +167,7 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 			if (in_location == 0)
 				in_location = 1;
 			tmp = it + 1;
-			if (*tmp == "	location" || tmp == _serverBlock.end())
+			if ( tmp == _serverBlock.end() || *tmp == "	location")
 			{
 				_locationBlock.push_back(*it);
 				location_parser *obj = new location_parser(_locationBlock);
