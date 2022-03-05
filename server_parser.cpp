@@ -167,17 +167,16 @@ bool						server_parser::set_directives(std::vector<std::string> tokens)
 			if (in_location == 0)
 				in_location = 1;
 			tmp = it + 1;
-			if (*tmp == "	location" || (*tmp).empty()) // ila salate 1st location
+			if (*tmp == "	location" || tmp == _serverBlock.end())
 			{
 				_locationBlock.push_back(*it);
 				location_parser *obj = new location_parser(_locationBlock);
 				_locations.push_back(*obj);
 				_locationBlock.clear();
 				delete obj;
-				
 			}
 			else
-				_locationBlock.push_back(*it); 
+				_locationBlock.push_back(*it);
 		}
 		else
 			throw ("File Error: line identation not valid !!");

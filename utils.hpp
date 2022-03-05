@@ -16,3 +16,4 @@ bool                            is_serverline(std::string str);
 bool                            is_locationline(std::string str);
 bool                            is_digit(std::string str);
 bool                            is_directive(std::string str);
+bool                            is_validefile(std::string str);

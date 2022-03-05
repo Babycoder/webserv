@@ -26,12 +26,11 @@ int     main(int ac , char *av[])
         return 1;
     }
 
-    
-    //std::cout << conf->_servers.size() << std::endl;
+    std::cout << conf->_servers.size() << std::endl;
 
-    std::cout<< conf->_servers[0]._locations[0].getAutoIndex() << std::endl;
+    // std::cout << conf->_servers[0]._locations[2].getRootPath() << std::endl;
 
-
+    std::cout << conf->_servers[0]._locations[0].getRedirection().second <<std::endl;
     delete conf;
     return 0;
 }

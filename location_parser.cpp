@@ -20,7 +20,7 @@ location_parser &location_parser::operator=(location_parser const &src){
 	cgi_path = src.cgi_path;
 	accepted_requests = src.accepted_requests;
 	index = src.index;
-	//redirection = src.redirection;
+	redirection = src.redirection;
 	_locationBlock = src._locationBlock;
 
 	return *this;
@@ -30,9 +30,19 @@ location_parser &location_parser::operator=(location_parser const &src){
 
 void		location_parser::setLocationDefault()
 {
+	auto_index = false;
 	accepted_requests.push_back("GET");
 	accepted_requests.push_back("DELETE");
 	accepted_requests.push_back("POST");
+
+	lid.index = 0;
+	lid.auto_index = 0;
+	lid.location_path = 0;
+	lid.root_path = 0;
+	lid.upload_path = 0;
+	lid.cgi_path = 0;
+	lid.accepted_requests = 0;
+	lid.redirection = 0;
 }
 
 
@@ -46,6 +56,11 @@ bool		location_parser::setAutoIndex(std::vector<std::string> tokens)
 		auto_index = false;
 	else
 		return false;
+	
+	lid.auto_index++;
+	if (lid.auto_index > 1)
+		return false;
+	
 	return true;
 }
 
@@ -54,6 +69,10 @@ bool		location_parser::setLocationPath(std::vector<std::string> tokens)
 	if(tokens.size() != 2)
 		return false;
 	location_path = tokens[1];
+	
+	lid.location_path++;
+	if (lid.location_path > 1)
+		return false;
 	
 	return true;
 }
@@ -64,6 +83,10 @@ bool		location_parser::setRootPath(std::vector<std::string> tokens)
 		return false;
 	root_path = tokens[1];
 
+	lid.root_path++;
+	if (lid.root_path > 1)
+		return false;
+
 	return true;
 }
 
@@ -72,6 +95,10 @@ bool		location_parser::setUploadPath(std::vector<std::string> tokens)
 	if(tokens.size() != 2)
 		return false;
 	upload_path = tokens[1];
+
+	lid.upload_path++;
+	if (lid.upload_path > 1)
+		return false;
 
 	return true;
 }
@@ -82,6 +109,9 @@ bool		location_parser::setCgiPath(std::vector<std::string> tokens)
 		return false;
 	cgi_path = tokens[1];
 
+	lid.cgi_path++;
+	if (lid.cgi_path > 1)
+		return false;
 	return true;
 }
 
@@ -100,6 +130,10 @@ bool		location_parser::setAcceptedRequeasts(std::vector<std::string> tokens)
 		accepted_requests.push_back(*it);
 	}
 
+	lid.accepted_requests++;
+	if (lid.accepted_requests > 1)
+		return false;
+
 	return true;
 }
 
@@ -113,9 +147,28 @@ bool		location_parser::setIndex(std::vector<std::string> tokens)
 	for(; it != tokens.end() ; it++)
 		index.push_back(*it);
 	
+	lid.index++;
+	if (lid.index > 1)
+		return false;
+
 	return true;
 }
 
+bool		location_parser::setRedirection(std::vector<std::string> tokens)
+{
+	if (tokens.size() != 3)
+		return false;
+	if (!is_digit(tokens[1]))
+		return false;
+
+	redirection = std::make_pair(tokens[1], tokens[2]);
+
+	lid.redirection++;
+	if(lid.redirection > 1)
+		return false;
+
+	return true;
+}
 
 
 
@@ -138,8 +191,8 @@ bool	location_parser::set_locationdirectives(std::vector<std::string> tokens)
 		res = setAcceptedRequeasts(tokens);
 	else if (tokens[0] == "index")
 		res = setIndex(tokens);
-	// else if (tokens[0] == "redirection")
-	// 	res = setRedirection(tokens);
+	else if (tokens[0] == "return")
+		res = setRedirection(tokens);
 	else
 		res = false;	
 	return res;
@@ -150,8 +203,7 @@ location_parser::location_parser(std::vector<std::string> block) : _locationBloc
 	setLocationDefault();
 	std::vector<std::string>                tokens;
 	
-	
-	std::vector<std::string>::iterator      it = _locationBlock.begin() + 1;
+		std::vector<std::string>::iterator      it = _locationBlock.begin() + 1;
 	for(; it != _locationBlock.end(); it++)
 	{
 		if(is_locationline(*it))
@@ -199,7 +251,7 @@ std::vector<std::string>		location_parser::getIndex()
 	return (index);
 }
 
-// std::vector<std::string>		location_parser::getRedirection()
-// {
-// 	return ();
-// }
+std::pair<std::string, std::string>		location_parser::getRedirection()
+{
+	return (redirection);
+}

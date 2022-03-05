@@ -12,11 +12,13 @@ parser &parser::operator=(parser const &src)
 	return *this;
 }
 
-parser::parser(const char *av)
+parser::parser(std::string av)
 {
 	std::fstream	_file;
 	bool 			in_block = 0;
 
+	if(!is_validefile(av))
+		throw "File Error : the file format must be .conf";
 	_file.open(av, std::ios::in);
 	if(_file.is_open())
 	{

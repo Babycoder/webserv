@@ -69,7 +69,15 @@ bool							is_directive(std::string str)
 	return false;
 }
 
-
+bool                            is_validefile(std::string str)
+{
+	int len = str.length();
+	if (len < 6)
+		return false;
+	if(str[len - 1] != 'f'  || str[len - 2] != 'n' || str[len - 3] != 'o' || str[len - 4] != 'c' || str[len - 5] != '.')
+		return false;
+	return true;
+}
 
 
 
