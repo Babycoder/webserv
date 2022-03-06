@@ -68,6 +68,9 @@ bool		location_parser::setLocationPath(std::vector<std::string> tokens)
 {
 	if(tokens.size() != 2)
 		return false;
+	if (tokens[1][0] != '*' && tokens[1][0] != '/')
+		return false;
+
 	location_path = tokens[1];
 	
 	lid.location_path++;
@@ -203,7 +206,7 @@ location_parser::location_parser(std::vector<std::string> block) : _locationBloc
 	setLocationDefault();
 	std::vector<std::string>                tokens;
 	
-		std::vector<std::string>::iterator      it = _locationBlock.begin() + 1;
+	std::vector<std::string>::iterator      it = _locationBlock.begin() + 1;
 	for(; it != _locationBlock.end(); it++)
 	{
 		if(is_locationline(*it))
@@ -215,6 +218,8 @@ location_parser::location_parser(std::vector<std::string> block) : _locationBloc
 		else
 			throw ("File Error: location line identation not valid !!");
 	}
+	if (lid.location_path != 1)
+		throw "File Error : set a location_path is mandatory !!";
 }
 
 
