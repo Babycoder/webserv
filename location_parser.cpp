@@ -68,7 +68,7 @@ bool		location_parser::setLocationPath(std::vector<std::string> tokens)
 {
 	if(tokens.size() != 2)
 		return false;
-	if (tokens[1][0] != '*' && tokens[1][0] != '/')
+	if (tokens[1][0] != '.' && tokens[1][0] != '/')
 		return false;
 
 	location_path = tokens[1];
