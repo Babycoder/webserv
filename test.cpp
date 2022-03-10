@@ -4,8 +4,8 @@
 
 int     main()
 {
-	bool i = is_locationline("	root /path");
 
-	std::cout << i << std::endl;
+	std::string str = "\r\n";
+	std::cout << "size = " << str.size() << std::endl;;
 	return 0;
 }	
