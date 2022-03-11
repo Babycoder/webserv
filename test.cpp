@@ -14,8 +14,8 @@ int     main()
 	obj.sendLine(str);
 	obj.sendLine(str2);
 	obj.sendLine(str3);
-	obj.sendLine("1body body body body body body body body body body body body body body body body body1");
-	obj.sendLine("2body body body body body body body body body body body body body body body body body2");
+	obj.sendLine("\n1body body body body body body body body body body body body body body body body body1\n");
+	obj.sendLine("\n2body body body body body body body body body body body body body body body body body2\n");
 	obj.sendLine("\n3body body body body body body body body body body body body body body body body body3\n");
 	obj.sendLine("\n4body body body body body body body body body body body body body body body body body4\n");
 

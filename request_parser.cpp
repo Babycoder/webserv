@@ -146,18 +146,18 @@ void				request_parser::sendLine(std::string _line)
 				if(!set_requestDirectives(*it))
 					throw "Request Error: Set Request Header failed !!";
 			}
-			if(bodyLength != 42 && !reserve.empty())
-			{
-				std::fstream file;
+			// if(bodyLength != 42 && !reserve.empty())
+			// {
+			// 	std::fstream file;
 
-				file.open(bodyFile, std::ios::app);
-				if(file.is_open())
-				{
-					file << reserve;
-					reserve.clear();
-					file.close();
-				}
-			}
+			// 	file.open(bodyFile, std::ios::app);
+			// 	if(file.is_open())
+			// 	{
+			// 		file << reserve;
+			// 		reserve.clear();
+			// 		file.close();
+			// 	}
+			// }
 		}
 	}
 	else
@@ -169,6 +169,11 @@ void				request_parser::sendLine(std::string _line)
 			file.open(bodyFile, std::ios::app);
 			if(file.is_open())
 			{
+				if(!reserve.empty())
+				{
+					_line = reserve + _line;
+					reserve.clear();
+				}
 				file << _line;
 				file.close();
 			}
