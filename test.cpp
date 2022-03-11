@@ -4,24 +4,23 @@
 int     main()
 {
 
-	// std::string str = "aymen ghazali student\r\nat 1337";
-	// size_t pos = str.find("\r\n");
 
-	// //std::string str2 = str.substr(pos);
+	std::string str = "DELETE /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
+	std::string str2 = "headkey1: value\r\nheadkey2: value\r\nheadkey3: value\r\nheadkey4: value";
+	std::string str3 = "\r\nContent-Length: 686\r\n\r\nbody body body body body";
 
-	// if(pos != std::string::npos)
-	// 	std::cout <<  pos << std::endl;
+	request_parser obj;
 
-	std::string str = "GET /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
-	std::vector<std::string> tokens;
+	obj.sendLine(str);
+	obj.sendLine(str2);
+	obj.sendLine(str3);
 
-	tokens = ft_split(str, ": \r\n");
+	std::vector<std::string> tokens = ft_split(obj.requestHeader, "\r\n");
+	print_vector(tokens);
 
-	std::cout << tokens.size() << std::endl;
+	std::cout << "================\n" << obj.reserve << "\n===============\n";
 
-	for (int i = 0; i < tokens.size(); i++)
-		std::cout << tokens[i] << std::endl;
-
+	std::cout << obj.getMethode() << std::endl;
 
 	return 0;
 }	

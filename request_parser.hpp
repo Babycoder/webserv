@@ -19,8 +19,6 @@ class request_parser
 		
 		// Variables;
 
-		std::string							requestHeader;
-		std::string							reserve;
 		int									in_body;
 		int									bodyLength;
 		bool								status;
@@ -33,9 +31,11 @@ class request_parser
 		~request_parser();
 		request_parser &operator=(request_parser const &src);
 		
-		void								sendLine(char *line);
+		void								sendLine(std::string _line);
 
 		
+		std::string							requestHeader;
+		std::string							reserve;
 		
 		
 		// Getters :
@@ -48,5 +48,16 @@ class request_parser
 		std::map<std::string, std::string>  getHeaders() { return headers; }
 		std::string                         getBodyFile() { return bodyFile;}
 		bool								getStatus(){return status; }
-		//server_parser                       getServer() { return serv; }
+		//server_parser						getServer() { return serv; }
+
+
+		// Setters :
+
+		bool		fillRequestHeader(std::string line);
+		bool		set_requestDirectives(std::string token);
+		bool		setRequestLine(std::string token);
+		bool		setPath(std::string token);
+		bool		setVersion(std::string token);
+
+
 };
