@@ -53,6 +53,29 @@ bool		request_parser::fillRequestHeader(std::string line)
 	return res;
 }
 
+bool		request_parser::fillChunkedBody(std::string line)
+{
+	bool res= false;
+
+	if(!reserve.empty())
+	{
+		chunkedBody += reserve;
+		reserve.clear();
+	}
+
+	size_t pos = line.find("0\r\n\r\n");
+	
+	if(pos != std::string::npos)
+	{
+		chunkedBody += line.substr(0, pos);
+		res = true;
+	}
+	else
+		chunkedBody += line;
+	
+	return res;
+}
+
 bool		request_parser::setPath(std::string token)
 {
 	std::vector<std::string> tokens = ft_split(token, "?");
@@ -177,7 +200,12 @@ void				request_parser::sendLine(std::string _line)
 		}
 		else
 		{
-
+			if(fillChunkedBody(_line))
+			{
+				status = 1;
+				std::vector<std::string> tokens = ft_split(chunkedBody, "\r\n");
+				print_vector(tokens);
+			}
 		}
 	}
 
