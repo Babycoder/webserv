@@ -20,7 +20,6 @@ class request_parser
 		// Variables;
 
 		int									in_body;
-		int									bodyLength;
 		bool								status;
 
 	
@@ -36,6 +35,7 @@ class request_parser
 		
 		std::string							requestHeader;
 		std::string							reserve;
+		int									bodyLength;
 		
 		
 		// Getters :

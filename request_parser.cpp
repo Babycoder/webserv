@@ -1,9 +1,10 @@
 #include "request_parser.hpp"
 
 request_parser::request_parser(){
+	bodyFile = "requestBody.txt";
 	status = false;
 	in_body = 0;
-	bodyLength = 0;
+	bodyLength = -42;
 }
 
 request_parser::~request_parser(){
@@ -51,18 +52,6 @@ bool		request_parser::fillRequestHeader(std::string line)
 	return res;
 }
 
-
-bool		request_parser::set_requestDirectives(std::string	token)
-{
-	bool res;
-
-	std::vector<std::string> tokens = ft_split(token, " ");
-
-
-
-	return res;	
-}
-
 bool		request_parser::setPath(std::string token)
 {
 	std::vector<std::string> tokens = ft_split(token, "?");
@@ -94,6 +83,7 @@ bool		request_parser::setVersion(std::string token)
 	return true;
 }
 
+
 bool		request_parser::setRequestLine(std::string token)
 {
 
@@ -117,6 +107,27 @@ bool		request_parser::setRequestLine(std::string token)
 
 	return true;	
 }
+
+
+
+bool		request_parser::set_requestDirectives(std::string	token)
+{
+
+
+	std::vector<std::string> tokens = ft_split(token, ": ");
+
+	if(tokens.size() < 2)
+		return false;
+
+	headers[tokens[0]] = tokens[1];
+	if(tokens[0] == "Content-Length")
+		bodyLength = atoi(tokens[1].c_str());
+
+	return true;
+}
+
+
+
 void				request_parser::sendLine(std::string _line)
 {
 
@@ -129,16 +140,44 @@ void				request_parser::sendLine(std::string _line)
 
 			if (!setRequestLine(*it))
 				throw "Request Error: Request Line failed !!";
-			// it++;
-			// for(; it < tokens.end(); it++)
-			// {
-			// 	set_requestDirectives(*it);
-			// }
+			it++;
+			for(; it < tokens.end(); it++)
+			{
+				if(!set_requestDirectives(*it))
+					throw "Request Error: Set Request Header failed !!";
+			}
+			if(bodyLength != 42 && !reserve.empty())
+			{
+				std::fstream file;
+
+				file.open(bodyFile, std::ios::app);
+				if(file.is_open())
+				{
+					file << reserve;
+					reserve.clear();
+					file.close();
+				}
+			}
 		}
 	}
 	else
 	{
-		
+		if (bodyLength != -42)
+		{
+			std::fstream file;
+			
+			file.open(bodyFile, std::ios::app);
+			if(file.is_open())
+			{
+				file << _line;
+				file.close();
+			}
+
+		}
+		else
+		{
+
+		}
 	}
 
 }

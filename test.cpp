@@ -14,13 +14,17 @@ int     main()
 	obj.sendLine(str);
 	obj.sendLine(str2);
 	obj.sendLine(str3);
+	obj.sendLine("1body body body body body body body body body body body body body body body body body1");
+	obj.sendLine("2body body body body body body body body body body body body body body body body body2");
+	obj.sendLine("\n3body body body body body body body body body body body body body body body body body3\n");
+	obj.sendLine("\n4body body body body body body body body body body body body body body body body body4\n");
 
 	std::vector<std::string> tokens = ft_split(obj.requestHeader, "\r\n");
 	print_vector(tokens);
 
 	std::cout << "================\n" << obj.reserve << "\n===============\n";
 
-	std::cout << obj.getMethode() << std::endl;
+	// std::cout << obj.getVersion() << std::endl;
 
 	return 0;
 }	
