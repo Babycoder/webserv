@@ -3,6 +3,7 @@
 request_parser::request_parser(){
 	bodyFile = "requestBody.txt";
 	status = false;
+	stored = 0;
 	in_body = 0;
 	bodyLength = -42;
 }
@@ -146,18 +147,6 @@ void				request_parser::sendLine(std::string _line)
 				if(!set_requestDirectives(*it))
 					throw "Request Error: Set Request Header failed !!";
 			}
-			// if(bodyLength != 42 && !reserve.empty())
-			// {
-			// 	std::fstream file;
-
-			// 	file.open(bodyFile, std::ios::app);
-			// 	if(file.is_open())
-			// 	{
-			// 		file << reserve;
-			// 		reserve.clear();
-			// 		file.close();
-			// 	}
-			// }
 		}
 	}
 	else
@@ -174,7 +163,14 @@ void				request_parser::sendLine(std::string _line)
 					_line = reserve + _line;
 					reserve.clear();
 				}
+				if((_line.length() + stored) > bodyLength)
+				{
+					_line = _line.substr(0, (bodyLength - stored));
+					status = true;
+				}
 				file << _line;
+				stored += _line.length();
+				std::cout << "Length of _line = " << _line.length() << std::endl;
 				file.close();
 			}
 

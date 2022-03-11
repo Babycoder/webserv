@@ -36,6 +36,7 @@ class request_parser
 		std::string							requestHeader;
 		std::string							reserve;
 		int									bodyLength;
+		int									stored;
 		
 		
 		// Getters :
