@@ -33,7 +33,7 @@ class request_parser
 	
 	public:
 
-		request_parser();
+		request_parser(std::string path);
 		~request_parser();
 		request_parser &operator=(request_parser const &src);
 		

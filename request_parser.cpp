@@ -1,7 +1,6 @@
 #include "request_parser.hpp"
 
-request_parser::request_parser(){
-	bodyFile = "requestBody.txt";
+request_parser::request_parser(std::string path) : bodyFile(path){
 	status = false;
 	stored = 0;
 	in_body = 0;
