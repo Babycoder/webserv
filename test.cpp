@@ -25,7 +25,7 @@ int     main()
 	obj.sendLine(str);
 	obj.sendLine(str2);
 	obj.sendLine(str3);
-	obj.sendLine("26\r\nVoici les données du premier morceau\r\n");
+	obj.sendLine("26\r\nVoici les données du deuxieme morceau\r\n");
 	obj.sendLine("1C\r\net voici un second morceau\r\n");
 	obj.sendLine("12\r\nsans saut de ligne\r\n0\r\n\r\n");
 	

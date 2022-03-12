@@ -217,13 +217,13 @@ void				request_parser::sendLine(std::string _line)
 
 				std::fstream file;
 
-				file.open(bodyFile, std::ios::app);
+				file.open(bodyFile, std::ios::out);
 				if(file.is_open())
 				{
 					for(; it != tokens.end(); it++)
 					{
 						if(!is_hexa(*it))
-							file << *it;
+							file << *it << std::endl;
 					}
 					file.close();
 				}
