@@ -207,7 +207,7 @@ void				request_parser::sendLine(std::string _line)
 		{
 			if(fillChunkedBody(_line))
 			{
-				status = 1;
+				status = true;
 				std::vector<std::string> tokens = ft_split(chunkedBody, "\r\n");
 				std::vector<std::string>::iterator it = tokens.begin();
 
