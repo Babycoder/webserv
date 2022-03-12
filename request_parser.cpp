@@ -6,6 +6,7 @@ request_parser::request_parser(){
 	stored = 0;
 	in_body = 0;
 	bodyLength = -42;
+	isChunked = 0;
 }
 
 request_parser::~request_parser(){
@@ -137,16 +138,24 @@ bool		request_parser::setRequestLine(std::string token)
 bool		request_parser::set_requestDirectives(std::string	token)
 {
 
+	size_t pos = token.find(": ");
 
-	std::vector<std::string> tokens = ft_split(token, ": ");
+	if(pos != std::string::npos)
+	{
+		std::string headkey = token.substr(0, pos);
+		std::string value =  token.substr(pos + 2);
+		
+		headers[headkey] = value;
 
-	if(tokens.size() < 2)
+		if(headkey == "Content-Length")
+			bodyLength = atoi(value.c_str());
+		
+		if(headkey == "Transfer-Encoding")
+			isChunked = 1;
+		
+	}
+	else
 		return false;
-
-	headers[tokens[0]] = tokens[1];
-	if(tokens[0] == "Content-Length")
-		bodyLength = atoi(tokens[1].c_str());
-
 	return true;
 }
 
@@ -198,13 +207,26 @@ void				request_parser::sendLine(std::string _line)
 			}
 
 		}
-		else
+		else if (isChunked == 1)
 		{
 			if(fillChunkedBody(_line))
 			{
 				status = 1;
 				std::vector<std::string> tokens = ft_split(chunkedBody, "\r\n");
-				print_vector(tokens);
+				std::vector<std::string>::iterator it = tokens.begin();
+
+				std::fstream file;
+
+				file.open(bodyFile, std::ios::app);
+				if(file.is_open())
+				{
+					for(; it != tokens.end(); it++)
+					{
+						if(!is_hexa(*it))
+							file << *it;
+					}
+					file.close();
+				}
 			}
 		}
 	}

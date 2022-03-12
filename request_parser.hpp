@@ -37,6 +37,7 @@ class request_parser
 		std::string							chunkedBody;
 		std::string							reserve;
 		int									bodyLength;
+		int 								isChunked;
 		int									stored;
 		
 		
@@ -56,11 +57,12 @@ class request_parser
 		// Setters :
 
 		bool		fillRequestHeader(std::string line);
+		bool		fillChunkedBody(std::string line);
+		
 		bool		set_requestDirectives(std::string token);
 		bool		setRequestLine(std::string token);
 		bool		setPath(std::string token);
 		bool		setVersion(std::string token);
-		bool		fillChunkedBody(std::string line);
 
 
 };

@@ -4,8 +4,19 @@
 int     main()
 {
 
+	// std::string str = "Accept-Encoding: ";
 
-	std::string str = "DELETE /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
+	// size_t pos = str.find(": ");
+
+	// if(pos != std::string::npos)
+	// {
+	// 	std::cout << pos << std::endl;
+	// 	std::cout << "First = " << str.substr(0, pos) << std::endl;
+	// 	std::cout << "Second = " << str.substr(pos + 2) << std::endl;
+		
+	// }
+
+	std::string str = "POST /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
 	std::string str2 = "headkey1: value\r\nheadkey2: value\r\nheadkey3: value\r\nheadkey4: value";
 	std::string str3 = "\r\nTransfer-Encoding: chunked\r\n\r\n26\r\nVoici les données du premier morceau\r\n";
 
@@ -30,6 +41,7 @@ int     main()
 	//std::cout << "================\n" << obj.reserve << "\n===============\n";
 
 	// std::cout << obj.getVersion() << std::endl;
+	std::cout << obj.getMethode() << std::endl;
 
 	return 0;
 }	

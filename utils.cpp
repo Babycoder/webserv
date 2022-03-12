@@ -80,6 +80,21 @@ bool                            is_validefile(std::string str)
 }
 
 
+bool                            is_hexa(std::string str)
+{
+	size_t i = 0;
+	size_t len = str.length();
+
+	while(i < len)
+	{
+		if ((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 70))
+			i++;
+		else
+			return false;
+	}
+	return true;
+}
+
 
 
 
