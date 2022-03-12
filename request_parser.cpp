@@ -60,19 +60,21 @@ bool		request_parser::fillRequestHeader(std::string line)
 {
 	bool res = false;
 
-	size_t pos = line.find("\r\n\r\n");
+	requestHeader += line;
+	
+	size_t pos = requestHeader.find("\r\n\r\n");
 
 	if (pos != std::string::npos)
 	{
-		requestHeader += line.substr(0, pos);
-		reserve += line.substr(pos + 4);
+		reserve += requestHeader.substr(pos + 4);
+		requestHeader = requestHeader.substr(0, pos);
 		in_body = 1;
 		res = true;
 	}
-	else
-	{
-		requestHeader += line;
-	}
+	// else
+	// {
+	// 	requestHeader += line;
+	// }
 
 
 	return res;
@@ -166,15 +168,14 @@ bool		request_parser::set_requestDirectives(std::string	token)
 	{
 		std::string headkey = token.substr(0, pos);
 		std::string value =  token.substr(pos + 2);
-		
-		headers[headkey] = value;
 
+		headers[headkey] = value;
 		if(headkey == "Content-Length")
 			bodyLength = atoi(value.c_str());
 		
 		if(headkey == "Transfer-Encoding")
 			isChunked = 1;
-		
+
 	}
 	else
 		return false;
