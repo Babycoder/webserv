@@ -25,6 +25,7 @@ int     main()
 
 	request_parser obj("filebody.txt");
 
+	std::cout << obj.getStatus() << std::endl;
 	try {
 		obj.sendLine(s);
 		//obj.sendLine("Test");
@@ -50,6 +51,8 @@ int     main()
 	{
 		std::cout << str << std::endl;
 	}
+	std::cout << obj.getStatus() << std::endl;
+	
 	//std::cout << obj.getHeaders()["Content-Length"] << std::endl;
 
 	//std::vector<std::string> tokens = ft_split(obj.requestHeader, "\r\n");

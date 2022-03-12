@@ -38,7 +38,6 @@ class request_parser
 		~request_parser();
 		request_parser &operator=(request_parser const &src);
 		
-		void								sendLine(std::string _line);
 
 		
 
@@ -46,27 +45,28 @@ class request_parser
 		
 		// Getters :
 		
-		std::string                         getError() { return error; }
-		std::string                         getMethode() { return methode; }
-		std::string                         getPath() { return path; }
-		std::string                         getQueries() { return queries; }
-		std::string                         getVersion() { return version; }
-		std::map<std::string, std::string>  getHeaders() { return headers; }
-		std::string                         getBodyFile() { return bodyFile;}
-		int									getStatus(){return status; }
-		//server_parser						getServer() { return serv; }
+		std::string                         	getError() { return error; }
+		std::string                         	getMethode() { return methode; }
+		std::string                         	getPath() { return path; }
+		std::string                         	getQueries() { return queries; }
+		std::string                         	getVersion() { return version; }
+		std::map<std::string, std::string>  	getHeaders() { return headers; }
+		std::string                         	getBodyFile() { return bodyFile;}
+		int										getStatus(){return status; }
+		//server_parser							getServer() { return serv; }
 
 
 		// Setters :
 
-		bool		fillRequestHeader(std::string line);
-		bool		fillChunkedBody(std::string line);
-		
-		bool		set_requestDirectives(std::string token);
-		bool		setRequestLine(std::string token);
-		bool		setPath(std::string token);
-		bool		setVersion(std::string token);
-		void 		removeFile();
+		void									sendLine(std::string _line);
+		bool									fillRequestHeader(std::string line);
+		bool									fillChunkedBody(std::string line);
+
+		bool									set_requestDirectives(std::string token);
+		bool									setRequestLine(std::string token);
+		bool									setPath(std::string token);
+		bool									setVersion(std::string token);
+		void 									removeFile();
 
 
 };

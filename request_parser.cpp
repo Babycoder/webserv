@@ -62,7 +62,7 @@ bool		request_parser::fillRequestHeader(std::string line)
 
 	requestHeader += line;
 	
-	size_t pos = requestHeader.find("\r\n\r\n");
+	size_t pos = requestHeader.find("\\r\\n\\r\\n");
 
 	if (pos != std::string::npos)
 	{
@@ -91,7 +91,7 @@ bool		request_parser::fillChunkedBody(std::string line)
 		reserve.clear();
 	}
 
-	size_t pos = line.find("0\r\n\r\n");
+	size_t pos = line.find("0\\r\\n\\r\\n");
 	
 	if(pos != std::string::npos)
 	{
