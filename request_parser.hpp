@@ -33,6 +33,7 @@ class request_parser
 	
 	public:
 
+		request_parser();
 		request_parser(std::string path);
 		~request_parser();
 		request_parser &operator=(request_parser const &src);
@@ -52,7 +53,7 @@ class request_parser
 		std::string                         getVersion() { return version; }
 		std::map<std::string, std::string>  getHeaders() { return headers; }
 		std::string                         getBodyFile() { return bodyFile;}
-		int								getStatus(){return status; }
+		int									getStatus(){return status; }
 		//server_parser						getServer() { return serv; }
 
 
@@ -65,6 +66,7 @@ class request_parser
 		bool		setRequestLine(std::string token);
 		bool		setPath(std::string token);
 		bool		setVersion(std::string token);
+		void 		removeFile();
 
 
 };

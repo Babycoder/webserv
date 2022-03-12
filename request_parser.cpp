@@ -1,5 +1,15 @@
 #include "request_parser.hpp"
 
+request_parser::request_parser(){
+	
+	bodyFile = "defaultBody.txt";
+	status = 0;
+	stored = 0;
+	in_body = 0;
+	bodyLength = 0;
+	isChunked = 0;
+}
+
 request_parser::request_parser(std::string path) : bodyFile(path){
 	status = 0;
 	stored = 0;
@@ -28,6 +38,14 @@ request_parser      &request_parser::operator=(request_parser const &src)
 	bodyLength = src.bodyLength;
 
 	return *this;
+}
+
+void				request_parser::removeFile()
+{
+	if( remove(bodyFile.c_str()) != 0 )
+    	std::cerr << "Error deleting file" << std::endl;
+  	else
+    	std::cout << "File successfully deleted" << std::endl;
 }
 
 

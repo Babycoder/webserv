@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <map>
+#include <stdio.h>
 
 
 std::vector<std::string>        ft_split(std::string str, std::string delim);
