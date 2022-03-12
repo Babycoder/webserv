@@ -71,6 +71,7 @@ bool		request_parser::fillRequestHeader(std::string line)
 		in_body = 1;
 		res = true;
 	}
+	//std::cout << reserve << std::endl;
 	// else
 	// {
 	// 	requestHeader += line;
@@ -203,8 +204,9 @@ void				request_parser::sendLine(std::string _line)
 					throw "Request Error: Set Request Header failed !!";
 			}
 		}
+
 	}
-	else
+	if(in_body == 1)
 	{
 		if (bodyLength != 0)
 		{
