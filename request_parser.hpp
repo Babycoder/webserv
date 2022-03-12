@@ -22,6 +22,13 @@ class request_parser
 		int									in_body;
 		bool								status;
 
+		std::string							requestHeader;
+		std::string							chunkedBody;
+		std::string							reserve;
+		int									bodyLength;
+		int 								isChunked;
+		int									stored;
+
 	
 	
 	public:
@@ -33,12 +40,7 @@ class request_parser
 		void								sendLine(std::string _line);
 
 		
-		std::string							requestHeader;
-		std::string							chunkedBody;
-		std::string							reserve;
-		int									bodyLength;
-		int 								isChunked;
-		int									stored;
+
 		
 		
 		// Getters :

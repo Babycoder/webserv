@@ -1,4 +1,0 @@
-Voici les données du premier morceau
-Voici les données du deuxieme morceau
-et voici un second morceau
-sans saut de ligne

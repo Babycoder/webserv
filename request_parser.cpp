@@ -202,7 +202,6 @@ void				request_parser::sendLine(std::string _line)
 				}
 				file << _line;
 				stored += _line.length();
-				std::cout << "Length of _line = " << _line.length() << std::endl;
 				file.close();
 			}
 
@@ -223,7 +222,7 @@ void				request_parser::sendLine(std::string _line)
 					for(; it != tokens.end(); it++)
 					{
 						if(!is_hexa(*it))
-							file << *it << std::endl;
+							file << *it;
 					}
 					file.close();
 				}

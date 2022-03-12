@@ -17,7 +17,8 @@ int     main()
 	// }
 
 	std::string str = "POST /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
-	std::string str2 = "headkey1: value\r\nheadkey2: value\r\nheadkey3: value\r\nheadkey4: value";
+	std::string str2 = "headkey1: value\r\nheadkey2: value\r\nheadkey3: value\r\nheadkey4: value\r\n";
+	//std::string str3 = "Content-Length: 80\r\n\r\n1body body body body body body body body body body body body body body body body body1";
 	std::string str3 = "\r\nTransfer-Encoding: chunked\r\n\r\n26\r\nVoici les données du premier morceau\r\n";
 
 	request_parser obj;
@@ -41,7 +42,7 @@ int     main()
 	//std::cout << "================\n" << obj.reserve << "\n===============\n";
 
 	// std::cout << obj.getVersion() << std::endl;
-	std::cout << obj.getMethode() << std::endl;
+	//std::cout << obj.getHeaders()["Content-Length"] << std::endl;
 
 	return 0;
 }	
