@@ -5,7 +5,7 @@ request_parser::request_parser(){
 	status = false;
 	stored = 0;
 	in_body = 0;
-	bodyLength = -42;
+	bodyLength = 0;
 	isChunked = 0;
 }
 
@@ -112,8 +112,6 @@ bool		request_parser::setVersion(std::string token)
 bool		request_parser::setRequestLine(std::string token)
 {
 
-	bool res = true;
-
 	std::vector<std::string> tokens = ft_split(token, " ");
 	
 	if (tokens.size() != 3)
@@ -183,7 +181,7 @@ void				request_parser::sendLine(std::string _line)
 	}
 	else
 	{
-		if (bodyLength != -42)
+		if (bodyLength != 0)
 		{
 			std::fstream file;
 			

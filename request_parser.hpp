@@ -25,7 +25,7 @@ class request_parser
 		std::string							requestHeader;
 		std::string							chunkedBody;
 		std::string							reserve;
-		int									bodyLength;
+		size_t								bodyLength;
 		int 								isChunked;
 		int									stored;
 
