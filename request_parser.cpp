@@ -31,11 +31,18 @@ request_parser      &request_parser::operator=(request_parser const &src)
 	methode = src.methode;
 	path = src.path;
 	queries = src.queries;
+	version = src.version;
 	headers = src.headers;
 	bodyFile = src.bodyFile;
-	status = src.status;
+	
 	in_body = src.in_body;
+	status = src.status;
+	requestHeader = src.requestHeader;
+	chunkedBody = src.chunkedBody;
+	reserve = src.reserve;
 	bodyLength = src.bodyLength;
+	isChunked = src.isChunked;
+	stored = src.stored;
 
 	return *this;
 }
