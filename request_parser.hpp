@@ -20,7 +20,7 @@ class request_parser
 		// Variables;
 
 		int									in_body;
-		bool								status;
+		int									status;
 
 		std::string							requestHeader;
 		std::string							chunkedBody;
@@ -52,7 +52,7 @@ class request_parser
 		std::string                         getVersion() { return version; }
 		std::map<std::string, std::string>  getHeaders() { return headers; }
 		std::string                         getBodyFile() { return bodyFile;}
-		bool								getStatus(){return status; }
+		int								getStatus(){return status; }
 		//server_parser						getServer() { return serv; }
 
 

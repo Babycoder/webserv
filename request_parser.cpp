@@ -1,7 +1,7 @@
 #include "request_parser.hpp"
 
 request_parser::request_parser(std::string path) : bodyFile(path){
-	status = false;
+	status = 0;
 	stored = 0;
 	in_body = 0;
 	bodyLength = 0;
@@ -192,10 +192,10 @@ void				request_parser::sendLine(std::string _line)
 					_line = reserve + _line;
 					reserve.clear();
 				}
-				if((_line.length() + stored) > bodyLength)
+				if((_line.length() + stored) >= bodyLength)
 				{
 					_line = _line.substr(0, (bodyLength - stored));
-					status = true;
+					status = 1;
 				}
 				file << _line;
 				stored += _line.length();
@@ -207,7 +207,7 @@ void				request_parser::sendLine(std::string _line)
 		{
 			if(fillChunkedBody(_line))
 			{
-				status = true;
+				status = 1;
 				std::vector<std::string> tokens = ft_split(chunkedBody, "\r\n");
 				std::vector<std::string>::iterator it = tokens.begin();
 
