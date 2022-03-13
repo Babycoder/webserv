@@ -28,6 +28,7 @@ int     main()
 	std::cout << obj.getStatus() << std::endl;
 	try {
 		obj.sendLine(s);
+		obj.sendLine("Pluuuuus");
 		//obj.sendLine("Test");
 		// obj.sendLine(str);
 		// obj.sendLine(str2);

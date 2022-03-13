@@ -91,15 +91,15 @@ bool		request_parser::fillChunkedBody(std::string line)
 		reserve.clear();
 	}
 
-	size_t pos = line.find("0\r\n\r\n");
+	chunkedBody += line; 
+
+	size_t pos = chunkedBody.find("0\r\n\r\n");
 	
 	if(pos != std::string::npos)
 	{
-		chunkedBody += line.substr(0, pos);
+		chunkedBody = chunkedBody.substr(0, pos);
 		res = true;
 	}
-	else
-		chunkedBody += line;
 	
 	return res;
 }
@@ -187,7 +187,6 @@ bool		request_parser::set_requestDirectives(std::string	token)
 
 void				request_parser::sendLine(std::string _line)
 {
-
 	if (in_body == 0)
 	{
 		if (fillRequestHeader(_line))
