@@ -19,7 +19,7 @@ int     main()
 	//std::string s = "POST / HTTP/1.1\r\nContent-Type: text/html\r\nContent-Length: 680\r\n\r\n<html><head><title></title></head><body><h1>Hello</h1></body></html>";
 	std::string str = "POST /path?query1=val&query2=val&query3=val&query4=val HTTP/1.1\r\n";
 	std::string str2 = "headkey1: value\r\nheadkey2: value\r\nheadkey3: value\r\nheadkey4: value\r\n";
-	std::string str3 = "Content-Length: 88\r\nheadkey5: value5\r\n\rBoooobiiiz Bobiiiiiz";
+	std::string str3 = "Content-Length: 88\r\nheadkey5: value5\r\n\r\nBoooobiiiz Bobiiiiiz";
 	// std::string str4 = "\nreserve rfgdsfgdsfgsdfgve";
 	//std::string str3 = "\r\nTransfer-Encoding: chunked\r\n\r\n26\r\nVoici les données du premier morceau\r\n";
 
